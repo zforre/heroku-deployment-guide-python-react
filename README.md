@@ -1,4 +1,4 @@
-## Heroku Deployment
+## HEROKU DEPLOYMENT
 
 1. Is the Python version you're using specified in your Pipfile?
 
