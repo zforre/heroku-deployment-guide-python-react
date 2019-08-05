@@ -14,6 +14,7 @@
 3. Create a Procfile
 
 * update your Procfile
+	* release: python manage.py migrate
 	* web: gunicorn <project_name>.wsgi --log-file -
   	* angle brackets indicate required content, you do not type the angle brackets
   	* replace <project_name> with the name of your project, e.g. conf
