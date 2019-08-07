@@ -36,14 +36,14 @@
 ```
 if DEBUG:
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ['DATABASE_URL']),
-    }
-else:
-    DATABASES = {
-        'default': {
+    	'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ['DATABASE_URL']),
     }
 ```
 * `DEBUG = True` is the default setting (look towards the top of the setting.py file)
@@ -283,14 +283,14 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 
 if DEBUG:
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ['DATABASE_URL']),
-    }
-else:
-    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ['DATABASE_URL']),
     }
 
 
