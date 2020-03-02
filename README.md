@@ -34,22 +34,19 @@
 	* add `'import dj_database_url'` directly below `'import os'` at the top of the file
 	* update the DATABASES setting
 ```
-if DEBUG:
+if os.environ.get('DATABASE_URL'):
     DATABASES = {
-    	'default': {
+        'default': dj_database_url.config(default=os.environ['DATABASE_URL'])
+    }
+else:
+    DATABASES = {
+        'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(default=os.environ['DATABASE_URL']),
-    }
 ```
-* `DEBUG = True` is the default setting (look towards the top of the setting.py file)
-	* Change `DEBUG` to `DEBUG = False` before pushing to GitHub
-	* Change `DEBUG` to `DEBUG = True` to run your app locally
-  
+
 6. Add `STATIC_ROOT` and `STATICFILES_STORAGE` to the bottom of your settings.py file
 
 * `STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')`
@@ -62,7 +59,7 @@ else:
     os.path.join(BASE_DIR, 'frontend/static/build/static'),
 )`
 
-6. Install psycopg2 
+6. Install psycopg2-binary
 
 7. Create Heroku app
 
